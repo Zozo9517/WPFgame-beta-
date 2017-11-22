@@ -110,7 +110,9 @@ namespace gameMenu
 
         private void help_png_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Logging.WriteLog("Help: Not Yet Implemented", LogType.WARNING);
+            Logging.WriteLog("Showing Help Window....");
+            Help help = new Help();
+            help.Show();
         }
     }
 }
