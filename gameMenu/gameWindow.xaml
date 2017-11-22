@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gameMenu"
         mc:Ignorable="d"
-        Title="gameWindow" Height="750" Width="750" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="gameWindow" Height="750" Width="750" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Canvas x:Name="gameCanvas">
         <Ellipse x:Name="mooving" Fill="#FFF4F4F5" Height="50" Canvas.Left="141" Stroke="Black" Canvas.Top="216" Width="50"/>
 

@@ -26,5 +26,12 @@ namespace gameMenu
                         
             
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            move m = new move(ref mooving, ref gameCanvas);
+            m.t.Interval = TimeSpan.FromMilliseconds(10);
+            m.t.Start();
+        }
     }
 }
