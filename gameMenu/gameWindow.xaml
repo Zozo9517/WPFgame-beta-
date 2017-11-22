@@ -6,5 +6,7 @@
         xmlns:local="clr-namespace:gameMenu"
         mc:Ignorable="d"
         Title="gameWindow" Height="750" Width="750" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Canvas x:Name="gameCanvas"/>
-</Window>
+    <Canvas x:Name="gameCanvas">
+        <Ellipse x:Name="mooving" Fill="#FFF4F4F5" Height="50" Canvas.Left="141" Stroke="Black" Canvas.Top="216" Width="50"/>
+
+    </Canvas></Window>
