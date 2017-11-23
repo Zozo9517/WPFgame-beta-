@@ -22,14 +22,12 @@ namespace gameMenu
         public gameWindow()
         {
             InitializeComponent();
-            gameCanvas.Background =new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory()+"\\FirstMap.png",UriKind.Absolute)));
-                        
-            
+            gameCanvas.Background =new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory()+"\\FirstMap.png",UriKind.Absolute)));                                  
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            move m = new move(ref mooving, ref gameCanvas);
+            move m = new move(ref mooving, ref gameCanvas, ref rekt1, ref rekt2, ref rekt3, ref rekt4, ref rekt5, ref rekt6, ref rekt7, ref rekt8, ref eli);
             m.t.Interval = TimeSpan.FromMilliseconds(10);
             m.t.Start();
         }

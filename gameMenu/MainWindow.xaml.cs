@@ -28,21 +28,21 @@ namespace gameMenu
         static bool DebugMode = SettingsListener.DebugMode();
         #endregion
 
-        static private MediaPlayer playsong = new MediaPlayer();
+       // static private MediaPlayer playsong = new MediaPlayer();
 
         public MainWindow()
         {
             InitializeComponent();
             Logging.CreateLogDir();
             if(DebugMode) Logging.ShowDebugLog();
-            playS();
+            //playS();
 
             Logging.WriteLog("Playing background video...");
             menubck.Source = new Uri(Directory.GetCurrentDirectory() + "\\menubck.mp4", UriKind.Absolute);
             menubck.Play();
 
         }
-        private void playS()
+ /*       private void playS()
         {
             Logging.WriteLog("Playing Music...");
             Uri uri = new Uri(Directory.GetCurrentDirectory() + "\\menu.mp3", UriKind.Absolute);
@@ -55,11 +55,13 @@ namespace gameMenu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        
         private void Playsong_MediaEnded(object sender, EventArgs e)
         {
             Logging.WriteLog("Looping music!");
             playsong.Play();
         }
+        */
         /// <summary>
         /// Helps for the background to be infinity
         /// </summary>

@@ -15,14 +15,33 @@ namespace gameMenu
     public partial class move
     {
         public DispatcherTimer t = new DispatcherTimer();
-        public move(ref Ellipse e, ref Canvas c)
+        public move(ref Ellipse e, ref Canvas c,ref Rectangle one, ref Rectangle two, ref Rectangle thr, ref Rectangle four, ref Rectangle five, ref Rectangle six, ref Rectangle sev, ref Rectangle eig, ref Ellipse ell)
         {
             t.Tick += t_Tick;
             mooving = e;
             gameCanvas = c;
+            rekt1 = one;
+            rekt2 = two;
+            rekt3 = thr;
+            rekt4 = four;
+            rekt5 = five;
+            rekt6 = six;
+            rekt7 = sev;
+            rekt8 = eig;
+            eli = ell;
+            
         }
         private Ellipse mooving;
         private Canvas gameCanvas;
+        private Rectangle rekt1;
+        private Rectangle rekt2;
+        private Rectangle rekt3;
+        private Rectangle rekt4;
+        private Rectangle rekt5;
+        private Rectangle rekt6;
+        private Rectangle rekt7;
+        private Rectangle rekt8;
+        private Ellipse eli;
         static public String moving()
         {
             if (Keyboard.IsKeyDown(Key.Down) && !Keyboard.IsKeyDown(Key.Right) && !Keyboard.IsKeyDown(Key.Left))
@@ -69,9 +88,9 @@ namespace gameMenu
         {
             x = Canvas.GetLeft(mooving);
             y = Canvas.GetTop(mooving);
-            if (moving() == "le")
+            if (moving() == "le" && !utkozes())
             {
-                if (y + 3 > gameCanvas.MaxHeight)
+                if (y + 3 > gameCanvas.MaxHeight-50)
                 {
                     y += 0;
                 }
@@ -83,7 +102,7 @@ namespace gameMenu
             }
             else if (moving() == "fel")
             {
-                if (y + 3 > gameCanvas.MaxHeight)
+                if (y - 3 < gameCanvas.MinHeight)
                 {
                     y -= 0;
                 }
@@ -94,7 +113,7 @@ namespace gameMenu
             }
             else if (moving() == "jobb")
             {
-                if (x + 3 > gameCanvas.ActualWidth)
+                if (x + 3 > gameCanvas.MaxHeight-50)
                 {
                     x += 0;
                 }
@@ -116,10 +135,16 @@ namespace gameMenu
             }
             if (moving() == "jobble")
             {
-                if ((y - 3 < gameCanvas.MinHeight && x + 3 > gameCanvas.ActualWidth))
+                if (y + 3 > gameCanvas.MaxHeight-50)
+                {
+                   
+                    y -= 0;
+                    x += 1.5;
+                }
+                else if (x + 3 > gameCanvas.MaxWidth-50)
                 {
                     x += 0;
-                    y -= 0;
+                    y += 1.5;
                 }
                 else
                 {
@@ -127,12 +152,17 @@ namespace gameMenu
                     y += 1.5;
                 }
             }
-            if (moving() == "balle")
+            else if (moving() == "balle")
             {
-                if ((y - 3 < gameCanvas.MinHeight && x + 3 > gameCanvas.MinWidth))
+                if (y + 3 > gameCanvas.MaxHeight -50 )
                 {
-                    x += 0;
-                    y -= 0;
+                    x -= 1.5;
+                    y += 0;
+                }
+                else if (x - 3 < gameCanvas.MinWidth)
+                {
+                    x -= 0;
+                    y += 1.5;
                 }
                 else
                 {
@@ -140,12 +170,17 @@ namespace gameMenu
                     y += 1.5;
                 }
             }
-            if (moving() == "jobbfel")
+           else if (moving() == "jobbfel")
             {
-                if ((y - 3 < gameCanvas.MinHeight && x + 3 > gameCanvas.ActualWidth))
+                if (y - 3 < gameCanvas.MinHeight)
+                {
+                    x += 1.5;
+                    y -= 0;
+                }
+                else if (x + 3 > gameCanvas.MaxWidth - 50)
                 {
                     x += 0;
-                    y -= 0;
+                    y -= 1.5;
                 }
                 else
                 {
@@ -153,12 +188,18 @@ namespace gameMenu
                     y -= 1.5;
                 }
             }
-            if (moving() == "balfel")
+           else if (moving() == "balfel")
             {
-                if ((y - 3 < gameCanvas.MinHeight && x + 3 > gameCanvas.ActualWidth))
+                if ( x - 3 < gameCanvas.MinWidth)
                 {
-                    x += 0;
+                    x -= 0;
+                    y -= 1.5;
+
+                }
+                else if (y - 3 < gameCanvas.MinHeight)
+                {
                     y -= 0;
+                    x -= 1.5;
                 }
                 else
                 {
@@ -169,6 +210,18 @@ namespace gameMenu
             Canvas.SetLeft(mooving, x);
             Canvas.SetTop(mooving, y);
 
+        }
+        public bool utkozes()
+        {
+          /*  if (moving() == "le")
+            {
+                if (Rect.Intersect(rekt1)
+                {
+                    return true;
+                }
+            }
+            */
+            return false;
         }
     }
 }
