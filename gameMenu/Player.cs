@@ -1,9 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using gameMenu.Debug;
 
 namespace gameMenu
 {
@@ -54,15 +53,16 @@ namespace gameMenu
 
         public void Move(string mve)
         {
+
             if(mve == "le")
             {
-                if (Y + 3 > canvas.MaxHeight - 50)
+                if (Y + 3 > canvas.MaxHeight)
                 {
                    SetLocation(X, Y);
                 }
                 else
                 {
-                    SetLocation(0, Y+3);
+                    SetLocation(X, Y+3);
                 }
              }
             else if (mve == "fel")
@@ -76,7 +76,7 @@ namespace gameMenu
                     SetLocation(X, Y - 3);
                 }
             }
-            else if(mve == "jobb")
+            else if(mve == "bal")
             {
                 if(X + 3 > canvas.MaxHeight - 50)
                 {
@@ -87,7 +87,7 @@ namespace gameMenu
                     SetLocation(X - 3, Y);
                 }
             }
-            else if(mve == "bal")
+            else if(mve == "jobb")
             {
                 if(X - 3 < canvas.MinWidth)
                 {
@@ -206,6 +206,7 @@ namespace gameMenu
 
         public void SetLocation(double x, double y)
         {
+            //Logging.WriteLog(String.Format("Player is at X[{0}] Y[{1} and moving to X[{2}] Y[{3}]",X,Y,x,y)); Memory can't handle this #SadPanda
             Canvas.SetLeft(currentImage, x);
             Canvas.SetTop(currentImage, y);
             X = x;
