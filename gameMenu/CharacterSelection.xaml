@@ -1,0 +1,23 @@
+﻿<Window x:Class="gameMenu.CharacterSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gameMenu"
+        mc:Ignorable="d"
+        Title="CharacterSelection" Height="265" Width="540" WindowStyle="None">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="44" Margin="35,28,0,0" VerticalAlignment="Top" Width="44">
+            <Image x:Name="playerOne_IMG" Source="cogwheel.png"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="44" Margin="35,91,0,0" VerticalAlignment="Top" Width="44">
+            <Image x:Name="playerTwo_IMG" Source="help.png"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="44" Margin="35,157,0,0" VerticalAlignment="Top" Width="44">
+            <Image x:Name="playerThree_IMG" Source="help.png"/>
+        </Border>
+        <Button x:Name="playerOne_Btn" Content="Choose Player One To Player" HorizontalAlignment="Left" Height="44" Margin="106,28,0,0" VerticalAlignment="Top" Width="378" Click="ChoosePlayer_Click"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+
+    </Grid>
+</Window>

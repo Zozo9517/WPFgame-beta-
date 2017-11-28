@@ -78,9 +78,10 @@ namespace gameMenu
         {
             Logging.WriteLog("Hide MainMenu!");
             this.Hide();
-            gameWindow gw = new gameWindow();
-            Logging.WriteLog("Game window opened!");
-            gw.Show();
+            CharacterSelection cs = new CharacterSelection();
+
+            Logging.WriteLog("Character selection");
+            cs.Show();
         }
 
         private void score_btn_Click(object sender, RoutedEventArgs e)

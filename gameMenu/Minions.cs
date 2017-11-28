@@ -16,7 +16,7 @@ namespace gameMenu
 
         public override void DamagePlayer(Player player)
         {
-            throw new NotImplementedException();
+            player.Health--;
         }
 
         public override void Move(Player player)
