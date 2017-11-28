@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="gameWindow" Height="750" Width="750" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Canvas x:Name="gameCanvas" MaxHeight="750" MaxWidth="750">
-        <Ellipse x:Name="mooving" Fill="#FFF4F4F5" Height="50" Canvas.Left="521" Stroke="Black" Canvas.Top="140" Width="50"/>
         <Rectangle x:Name="rekt1" Fill="#FFF4F4F5" Height="320" Stroke="Black" Width="50"/>
         <Rectangle x:Name="rekt2" Fill="#FFF4F4F5" Height="50" Canvas.Left="50" Stroke="Black" Width="250"/>
         <Rectangle x:Name="rekt3" Fill="#FFF4F4F5" Height="50" Canvas.Left="450" Stroke="Black" Width="250"/>
@@ -17,7 +16,7 @@
         <Rectangle x:Name="rekt7" Fill="#FFF4F4F5" Height="50" Canvas.Left="450" Stroke="Black" Width="250" Canvas.Top="700"/>
         <Rectangle x:Name="rekt8" Fill="#FFF4F4F5" Height="50" Canvas.Left="50" Stroke="Black" Width="250" Canvas.Top="700"/>
         <DockPanel Height="100" LastChildFill="False" Canvas.Left="450" Canvas.Top="432" Width="100"/>
-        <Image x:Name="playerCurrentImage" Width="50" Height="50" Source="cogwheel.png">
+        <Image x:Name="playerCurrentImage" Width="50" Height="50">
   
         </Image>
     </Canvas>

@@ -6,17 +6,21 @@ using gameMenu.Debug;
 
 namespace gameMenu
 {
+
+    //TODO: CODE SIMPLIFICATION
     public class Player : ILocation
     {
         public int Health;
-        //4 Pictures only!! Left-Up-Down-Right
-        public Image[] player;
+
+        public BitmapImage[] player;
         public double X, Y;
         public Canvas canvas;
         public Image currentImage { get; set; }
-        
 
-        public Player(int health, Image[] player, double x, double y, ref Canvas gameCanvas)
+        private int currentDown = 0, currentUp = 5, currentLeft = 10, currentRight = 15;
+        private int AnimTick = 0;
+
+        public Player(int health, BitmapImage[] player, double x, double y, ref Canvas gameCanvas)
         {
             Health = health;
             this.player = player;
@@ -24,14 +28,16 @@ namespace gameMenu
             Y = y;
             canvas = gameCanvas;
         }
-        public Player(int health, Image[] player, ref Canvas gameCanvas)
+
+        public Player(int health, BitmapImage[] player, ref Canvas gameCanvas)
         {
             Health = health;
             this.player = player;
             gameWindow.GetCanvasCenter(out X, out Y);
             canvas = gameCanvas;
         }
-        public Player(Image[] player, ref Canvas gameCanvas)
+
+        public Player(BitmapImage[] player, ref Canvas gameCanvas)
         {
             Health = 3;
             this.player = player;
@@ -39,16 +45,21 @@ namespace gameMenu
             canvas = gameCanvas;
             currentImage.Source = new BitmapImage(new Uri("cogwheel.png",UriKind.Relative));
         }
-        /// <summary>
-        /// ONLY IN TEST CASE
-        /// </summary>
+
+        public void InitPlayer(ref Image playerInstance)
+        {
+            currentImage = playerInstance;
+            ChImSrc(player[0]); //Player Standby For the first time
+        }
+        
         public Player()
         {
             Health = 3;
             player = null;
-            gameWindow.GetCanvasCenter(out X, out Y);           
+            gameWindow.GetCanvasCenter(out X, out Y);
         }
         double ILocation.X { get => X; set => X = value; }
+
         double ILocation.Y { get => Y; set => Y = value; }
 
         public void Move(string mve)
@@ -59,10 +70,12 @@ namespace gameMenu
                 if (Y + 3 > canvas.MaxHeight)
                 {
                    SetLocation(X, Y);
+                   AnimateDown();
                 }
                 else
                 {
                     SetLocation(X, Y+3);
+                    AnimateDown();
                 }
              }
             else if (mve == "fel")
@@ -163,6 +176,7 @@ namespace gameMenu
             }
 
         }
+
         static public string moving()
         {
             if (Keyboard.IsKeyDown(Key.Down) && !Keyboard.IsKeyDown(Key.Right) && !Keyboard.IsKeyDown(Key.Left))
@@ -211,6 +225,38 @@ namespace gameMenu
             Canvas.SetTop(currentImage, y);
             X = x;
             Y = y;
+        }
+
+        private void AnimateDown()
+        {
+            if (AnimTick == 5)
+            {
+                ChImSrc(player[currentDown]);
+                if (currentDown == 4) currentDown = 0;
+                else currentDown++;
+                AnimTick = 0;
+            }
+            else
+            {
+                AnimTick++;
+
+            }
+        }
+        private void AnimateUp()
+        {
+        }
+        private void AnimateLeft()
+        {
+     
+
+        }
+        private void AnimateRight()
+        {
+            
+        }
+        private void ChImSrc(BitmapImage bim)
+        {
+            currentImage.Source = bim;
         }
     }
 }

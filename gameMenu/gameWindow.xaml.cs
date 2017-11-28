@@ -16,6 +16,8 @@ using System.Windows.Threading;
 
 namespace gameMenu
 {
+    //TODO: PlayerCode Simplification
+
     /// <summary>
     /// Interaction logic for gameWindow.xaml
     /// </summary>
@@ -24,23 +26,23 @@ namespace gameMenu
         private DispatcherTimer mainTimer = new DispatcherTimer();
         private DispatcherTimer minionTimer = new DispatcherTimer();
         private DispatcherTimer spawnTimer = new DispatcherTimer();
-
         private Player player;
         private List<Minion> Enemies = new List<Minion>();
         public gameWindow()
         {
             InitializeComponent();
-            gameCanvas.Background =new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory()+"\\FirstMap.png",UriKind.Absolute)));
+            gameCanvas.Background = new ImageBrush(new BitmapImage(StaticURIs.FirstMap));
             mainTimer.Tick += MainTimer_Tick;
         }
         public gameWindow(Player p)
         {
             InitializeComponent();
-            gameCanvas.Background = new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\FirstMap.png", UriKind.Absolute)));
+            gameCanvas.Background = new ImageBrush(new BitmapImage(StaticURIs.FirstMap));
             mainTimer.Tick += MainTimer_Tick;
             player = p;
             player.canvas = gameCanvas;
-            player.currentImage = playerCurrentImage;       
+            Canvas.SetLeft(playerCurrentImage, 375);
+            Canvas.SetTop(playerCurrentImage, 375);
            
           }
         /// <summary>
@@ -67,7 +69,6 @@ namespace gameMenu
             x = 375;
             y = 375;
         }
-
 
     }
 }

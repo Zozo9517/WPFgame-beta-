@@ -71,6 +71,7 @@
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingsListener.cs" />
+    <Compile Include="StaticURIs.cs" />
     <Page Include="CharacterSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

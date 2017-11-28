@@ -27,59 +27,87 @@ namespace gameMenu
         #region Settings Params
         static bool DebugMode = SettingsListener.DebugMode();
         #endregion
-
-       // static private MediaPlayer playsong = new MediaPlayer();
+        bool playmenu = true;
+        static private MediaPlayer playsong = new MediaPlayer();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            #region Init Uris
+            cogwheel_png.Source = new BitmapImage(StaticURIs.Cogwheel);
+            help_png.Source = new BitmapImage(StaticURIs.Help);
+
+            #endregion
+
             Logging.CreateLogDir();
             if(DebugMode) Logging.ShowDebugLog();
-            //playS();
+            playS();
 
             Logging.WriteLog("Playing background video...");
-            menubck.Source = new Uri(Directory.GetCurrentDirectory() + "\\menubck.mp4", UriKind.Absolute);
+            menubck.Source = StaticURIs.MenuVideo;
             menubck.Play();
-
+            
         }
- /*       private void playS()
+        /// <summary>
+        /// Playing song...
+        /// </summary>
+        private void playS()
         {
             Logging.WriteLog("Playing Music...");
-            Uri uri = new Uri(Directory.GetCurrentDirectory() + "\\menu.mp3", UriKind.Absolute);
+            Uri uri = StaticURIs.MenuMusic;
             playsong.Open(uri);
             playsong.MediaEnded += Playsong_MediaEnded;
             playsong.Play();
         }
         /// <summary>
-        /// Helps for the background music to be infinity
+        /// Helps for the background music to be infinite
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
-        
+        /// <param name="e"></param>        
         private void Playsong_MediaEnded(object sender, EventArgs e)
         {
-            Logging.WriteLog("Looping music!");
-            playsong.Play();
+            if (playmenu)
+            {
+                Logging.WriteLog("Looping music!");
+                playsong.Position = TimeSpan.Zero;
+                playsong.Play();
+            }
+            else
+            {
+                playsong.Stop();
+                Logging.WriteLog("Stopped background music!");
+            }
         }
-        */
+        
         /// <summary>
-        /// Helps for the background to be infinity
+        /// Helps for the background to be infinite
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
-            Logging.WriteLog("Looping background!");
-            menubck.Source = new Uri(Directory.GetCurrentDirectory() + "\\menubck.mp4", UriKind.Absolute);
-            menubck.Play();
+            if (playmenu)
+            {
+                Logging.WriteLog("Looping background!");
+                menubck.Position = TimeSpan.Zero;
+            }
+            else
+            {
+                menubck.Stop();
+                Logging.WriteLog("Stopped background!");
+            }
+
         }
 
         private void newGame_btn_Click(object sender, RoutedEventArgs e)
         {
             Logging.WriteLog("Hide MainMenu!");
-            this.Hide();
+            Hide();
             CharacterSelection cs = new CharacterSelection();
-
+            playmenu = false;
+            Logging.WriteLog("Stopped music");
+            playsong.Stop();
             Logging.WriteLog("Character selection");
             cs.Show();
         }

@@ -8,7 +8,7 @@
         Title="CharacterSelection" Height="265" Width="540" WindowStyle="None">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="44" Margin="35,28,0,0" VerticalAlignment="Top" Width="44">
-            <Image x:Name="playerOne_IMG" Source="cogwheel.png"/>
+            <Image x:Name="playerOne_IMG"/>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="44" Margin="35,91,0,0" VerticalAlignment="Top" Width="44">
             <Image x:Name="playerTwo_IMG" Source="help.png"/>
