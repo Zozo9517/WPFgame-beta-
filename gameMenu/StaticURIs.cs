@@ -31,12 +31,12 @@ namespace gameMenu
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\d4.PNG")),
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\d5.PNG")),
 
-           /*new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\u1.png")), //5-9 //StandBy = 5
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\u1.png")), //5-9 //StandBy = 5
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\u2.png")),
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\u3.png")),
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\u4.png")),
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\u5.png")),
-
+            
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\l1.png")),//10-14 //StandBy = 10
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\l2.png")),
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\l3.png")),
@@ -47,7 +47,30 @@ namespace gameMenu
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\r2.png")),
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\r3.png")),
             new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\r4.png")),
-            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\r5.png")),*/
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\p_one\\r5.png"))
+        };
+
+        public static BitmapImage[] Imp_BitMaps =
+        {
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\d1.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\d2.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\d3.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\d4.PNG")),
+
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\u1.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\u2.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\u3.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\u4.PNG")),
+
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\l1.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\l2.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\l3.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\l4.PNG")),
+
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\r1.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\r2.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\r3.PNG")),
+            new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\data\\minions\\imp\\r4.PNG")),
         };
 
     }

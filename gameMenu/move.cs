@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 
 namespace gameMenu
 {
+    //it is now unnecessary
     public partial class move
     {
         public DispatcherTimer t = new DispatcherTimer();

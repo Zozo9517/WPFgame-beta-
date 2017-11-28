@@ -83,10 +83,12 @@ namespace gameMenu
                 if(Y - 3 < canvas.MinHeight)
                 {
                     SetLocation(X, Y);
+                    AnimateUp();
                 }
                 else
                 {
                     SetLocation(X, Y - 3);
+                    AnimateUp();
                 }
             }
             else if(mve == "bal")
@@ -94,10 +96,12 @@ namespace gameMenu
                 if(X + 3 > canvas.MaxHeight - 50)
                 {
                     SetLocation(X, Y);
+                    AnimateLeft();
                 }
                 else
                 {
                     SetLocation(X - 3, Y);
+                    AnimateLeft();
                 }
             }
             else if(mve == "jobb")
@@ -105,10 +109,12 @@ namespace gameMenu
                 if(X - 3 < canvas.MinWidth)
                 {
                     SetLocation(X, Y);
+                    AnimateRight();
                 }
                 else
                 {
                     SetLocation(X + 3, Y);
+                    AnimateRight();
                 }
             }
             if (moving() == "jobble")
@@ -116,14 +122,17 @@ namespace gameMenu
                 if (Y + 3 > canvas.MaxHeight - 50)
                 {
                     SetLocation(X + 1.5, Y);
+                    AnimateDown();
                 }
                 else if (X + 3 > canvas.MaxWidth - 50)
                 {
                     SetLocation(X, Y + 1.5);
+                    AnimateDown();
                 }
                 else
                 {
-                    SetLocation(X + 1.5, Y + 1.5);   
+                    SetLocation(X + 1.5, Y + 1.5);
+                    AnimateDown();
                 }
             }
             else if (mve == "balle")
@@ -131,15 +140,18 @@ namespace gameMenu
                 if (Y + 3 > canvas.MaxHeight - 50)
                 {
                     SetLocation(X - 1.5, Y);
+                    AnimateDown();
 
                 }
                 else if (X - 3 < canvas.MinWidth)
                 {
                     SetLocation(X, Y + 1.5);
+                    AnimateDown();
                 }
                 else
                 {
                     SetLocation(X - 1.5, Y + 1.5);
+                    AnimateDown();
                 }
             }
             else if (mve== "jobbfel")
@@ -147,15 +159,18 @@ namespace gameMenu
                 if (Y - 3 < canvas.MinHeight)
                 {
                     SetLocation(X + 1.5, Y);
+                    AnimateUp();
 
                 }
                 else if (X + 3 > canvas.MaxWidth - 50)
                 {
                     SetLocation(X, Y - 1.5);
+                    AnimateUp();
                 }
                 else
                 {
                     SetLocation(X + 1.5, Y - 1.5);
+                    AnimateUp();
                 }
             }
             else if (mve == "balfel")
@@ -163,15 +178,17 @@ namespace gameMenu
                 if (X - 3 < canvas.MinWidth)
                 {
                     SetLocation(X, Y - 1.5);
-
+                    AnimateUp();
                 }
                 else if (Y - 3 < canvas.MinHeight)
                 {
                     SetLocation(X - 1.5, Y);
+                    AnimateUp();
                 }
                 else
                 {
                     SetLocation(X - 1.5, Y - 1.5);
+                    AnimateUp();
                 }
             }
 
@@ -232,7 +249,7 @@ namespace gameMenu
             if (AnimTick == 5)
             {
                 ChImSrc(player[currentDown]);
-                if (currentDown == 4) currentDown = 0;
+                if (currentDown >= 4) currentDown = 0;
                 else currentDown++;
                 AnimTick = 0;
             }
@@ -244,15 +261,47 @@ namespace gameMenu
         }
         private void AnimateUp()
         {
+            if (AnimTick == 5)
+            {
+                ChImSrc(player[currentUp]);
+                if (currentUp >= 9) currentUp = 5;
+                else currentUp++;
+                AnimTick = 0;
+            }
+            else
+            {
+                AnimTick++;
+
+            }
         }
         private void AnimateLeft()
         {
-     
+            if (AnimTick == 5)
+            {
+                ChImSrc(player[currentLeft]);
+                if (currentLeft >= 14) currentLeft = 10;
+                else currentLeft++;
+                AnimTick = 0;
+            }
+            else
+            {
+                AnimTick++;
+            }
 
         }
         private void AnimateRight()
         {
-            
+            if (AnimTick == 5)
+            {
+                ChImSrc(player[currentRight]);
+                if (currentRight >= 19) currentRight = 15;
+                else currentRight++;
+                AnimTick = 0;
+            }
+            else
+            {
+                AnimTick++;
+            }
         }
         private void ChImSrc(BitmapImage bim)
         {

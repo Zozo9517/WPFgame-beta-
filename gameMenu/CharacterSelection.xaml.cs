@@ -18,7 +18,7 @@ namespace gameMenu
     /// Interaction logic for CharacterSelection.xaml
     /// </summary>
     /// 
-    //TODO: Player Init Simplification
+
     public partial class CharacterSelection : Window
     {
         public CharacterSelection()

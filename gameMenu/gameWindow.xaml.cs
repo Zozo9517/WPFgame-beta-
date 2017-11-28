@@ -16,8 +16,6 @@ using System.Windows.Threading;
 
 namespace gameMenu
 {
-    //TODO: PlayerCode Simplification
-
     /// <summary>
     /// Interaction logic for gameWindow.xaml
     /// </summary>
@@ -28,6 +26,9 @@ namespace gameMenu
         private DispatcherTimer spawnTimer = new DispatcherTimer();
         private Player player;
         private List<Minion> Enemies = new List<Minion>();
+
+        //One Minion
+        bool onespawned = false;
         public gameWindow()
         {
             InitializeComponent();
@@ -39,12 +40,40 @@ namespace gameMenu
             InitializeComponent();
             gameCanvas.Background = new ImageBrush(new BitmapImage(StaticURIs.FirstMap));
             mainTimer.Tick += MainTimer_Tick;
+            spawnTimer.Tick += SpawnTimer_Tick;
+            minionTimer.Tick += MinionTimer_Tick;
             player = p;
             player.canvas = gameCanvas;
             Canvas.SetLeft(playerCurrentImage, 375);
             Canvas.SetTop(playerCurrentImage, 375);
            
           }
+
+        private void MinionTimer_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                Enemies[i].Move(player);
+            }
+        }
+
+        private void SpawnTimer_Tick(object sender, EventArgs e)
+        {
+            if(!onespawned)
+            {
+                Imp i = new Imp(1, StaticURIs.Imp_BitMaps);
+                Image imp_image = new Image();
+                imp_image.Height = 50;
+                imp_image.Width = 50;
+                i.InitMinion(ref imp_image, ref gameCanvas);
+                gameCanvas.Children.Add(imp_image);
+                Canvas.SetTop(imp_image, 375);
+                Canvas.SetLeft(imp_image, 50);
+                onespawned = true;
+                Enemies.Add(i);
+            }
+        }
+
         /// <summary>
         /// Game Timer
         /// </summary>
@@ -61,7 +90,11 @@ namespace gameMenu
             //m.t.Interval = TimeSpan.FromMilliseconds(10);
             // m.t.Start();
             mainTimer.Interval = TimeSpan.FromMilliseconds(10);
+            minionTimer.Interval = TimeSpan.FromMilliseconds(5);
+            spawnTimer.Interval = TimeSpan.FromMilliseconds(200);
             mainTimer.Start();
+            minionTimer.Start();
+            spawnTimer.Start();
         }
 
         public static void GetCanvasCenter(out double x, out double y)
