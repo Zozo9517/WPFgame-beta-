@@ -63,6 +63,7 @@
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
     <Compile Include="ILocation.cs" />
+    <Compile Include="Lottery.cs" />
     <Compile Include="Minions.cs" />
     <Compile Include="move.cs" />
     <Compile Include="Minion.cs" />
@@ -71,6 +72,7 @@
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingsListener.cs" />
+    <Compile Include="Spawner.cs" />
     <Compile Include="StaticURIs.cs" />
     <Page Include="CharacterSelection.xaml">
       <SubType>Designer</SubType>

@@ -26,7 +26,6 @@ namespace gameMenu
             Environment.Exit(0);
         }
 
-
         public override void Move(Player player)
         {
             double playX = player.X;

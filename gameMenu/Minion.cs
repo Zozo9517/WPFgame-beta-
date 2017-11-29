@@ -46,7 +46,10 @@ namespace gameMenu
             X = x;
             Y = y;
         }
-
+        public BitmapImage GetStandby()
+        {
+            return minion[0];
+        }
         protected void AnimateDown()
         {
             if (AnimTick == 5)

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Windows.Threading;
+using System.Threading;
 
 namespace gameMenu
 {
@@ -25,10 +26,15 @@ namespace gameMenu
         private DispatcherTimer minionTimer = new DispatcherTimer();
         private DispatcherTimer spawnTimer = new DispatcherTimer();
         private Player player;
+      
+        private List<Image> Enemies_Box = new List<Image>();
         private List<Minion> Enemies = new List<Minion>();
-
-        //One Minion
-        bool onespawned = false;
+        private Spawner MainSpawner;
+        //Wave Spawner
+        Waves waves = new Waves();
+        int currentWave = 0;
+        int currentSpawn;
+        
         public gameWindow()
         {
             InitializeComponent();
@@ -46,7 +52,9 @@ namespace gameMenu
             player.canvas = gameCanvas;
             Canvas.SetLeft(playerCurrentImage, 375);
             Canvas.SetTop(playerCurrentImage, 375);
-           
+            MainSpawner = new Spawner(Enemies_Box, Enemies);
+            MainSpawner.InitSpawner(ref gameCanvas);
+            currentSpawn = 0;
           }
 
         private void MinionTimer_Tick(object sender, EventArgs e)
@@ -59,18 +67,21 @@ namespace gameMenu
 
         private void SpawnTimer_Tick(object sender, EventArgs e)
         {
-            if(!onespawned)
+            if(currentSpawn < waves[currentWave])
+            {           
+                MainSpawner.Spawn();
+                currentSpawn++;
+            }
+            else
             {
-                Imp i = new Imp(1, StaticURIs.Imp_BitMaps);
-                Image imp_image = new Image();
-                imp_image.Height = 50;
-                imp_image.Width = 50;
-                i.InitMinion(ref imp_image, ref gameCanvas);
-                gameCanvas.Children.Add(imp_image);
-                Canvas.SetTop(imp_image, 375);
-                Canvas.SetLeft(imp_image, 50);
-                onespawned = true;
-                Enemies.Add(i);
+                if(waves.Count() >= currentWave)
+                {
+                    waves.AddWaveExp();
+                }
+                else
+                {
+                    currentWave++;
+                }
             }
         }
 
@@ -82,6 +93,7 @@ namespace gameMenu
         private void MainTimer_Tick(object sender, EventArgs e)
         {
             player.Move(Player.moving());
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -91,7 +103,7 @@ namespace gameMenu
             // m.t.Start();
             mainTimer.Interval = TimeSpan.FromMilliseconds(10);
             minionTimer.Interval = TimeSpan.FromMilliseconds(5);
-            spawnTimer.Interval = TimeSpan.FromMilliseconds(200);
+            spawnTimer.Interval = TimeSpan.FromMilliseconds(2000);
             mainTimer.Start();
             minionTimer.Start();
             spawnTimer.Start();
